@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Role;
+use App\Models\User;
 
 class UserSeeder extends Seeder
 {
@@ -20,21 +22,21 @@ class UserSeeder extends Seeder
         $adminRole->save();
         // Membuat role member
         $memberRole = new Role();
-        $memberRole->name = "member";
-        $memberRole->display_name = "Member";
+        $memberRole->name = "staff";
+        $memberRole->display_name = "Staff";
         $memberRole->save();
         // Membuat sample admin
         $admin = new User();
-        $admin->name = 'Admin Ulas Buku';
+        $admin->name = 'Admin';
         $admin->email = 'admin@gmail.com';
-        $admin->password = bcrypt('rahasia');
+        $admin->password = bcrypt('qwerty');
         $admin->save();
         $admin->attachRole($adminRole);
         // Membuat sample member
         $member = new User();
-        $member->name = "Sample Member";
-        $member->email = 'member@gmail.com';
-        $member->password = bcrypt('rahasia');
+        $member->name = "Staff";
+        $member->email = 'staff@gmail.com';
+        $member->password = bcrypt('qwerty');
         $member->save();
         $member->attachRole($memberRole);
    }
