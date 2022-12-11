@@ -53,7 +53,7 @@ Route::get('/inventory/create', [App\Http\Controllers\ManagementInventory::class
 Route::post('/inventory/create', [App\Http\Controllers\ManagementInventory::class, 'store'])->name('inventory_create_form');
 Route::get('/inventory/edit/{id}', [App\Http\Controllers\ManagementInventory::class, 'edit_page'])->name('inventory_edit');
 Route::post('/inventory/update/{id}', [App\Http\Controllers\ManagementInventory::class, 'update'])->name('inventory_edit_post');
-Route::get('/inventory/delete/{id}', [App\Http\Controllers\ManagementInventory::class, 'delete'])->name('inventory_delete');
+Route::post('/inventory/delete/{id}', [App\Http\Controllers\ManagementInventory::class, 'delete'])->name('inventory_delete');
 
 ### Room 
 Route::get('/room', [App\Http\Controllers\ManagementRoom::class, 'index'])->name('room_index');
@@ -61,6 +61,12 @@ Route::get('/room/details/{id}', [App\Http\Controllers\ManagementRoom::class, 'd
 Route::get('/room/create', [App\Http\Controllers\ManagementRoom::class, 'store_index'])->name('room_create');
 Route::post('/room/create', [App\Http\Controllers\ManagementRoom::class, 'store'])->name('room_create_form');
 Route::get('/room/edit/{id}', [App\Http\Controllers\ManagementRoom::class, 'edit_page'])->name('room_edit');
-Route::get('/room/delete/{id}', [App\Http\Controllers\ManagementRoom::class, 'delete'])->name('room_delete');
+Route::post('/room/delete/{id}', [App\Http\Controllers\ManagementRoom::class, 'delete'])->name('room_delete');
 Route::post('/room/update/{id}', [App\Http\Controllers\ManagementRoom::class, 'update'])->name('room_update');
 
+### Room Data
+Route::get('/room/add_inventory', [App\Http\Controllers\RoomDataController::class, 'index'])->name('room_index_inventory');
+Route::post('/room/add_inventory', [App\Http\Controllers\RoomDataController::class, 'store'])->name('room_store_inventory');
+Route::get('/room/inventory/edit/{id}', [App\Http\Controllers\RoomDataController::class, 'update_index'])->name('room_update_inventory_page');
+Route::post('/room/inventory/edit', [App\Http\Controllers\RoomDataController::class, 'update'])->name('room_update_inventory');
+Route::post('/room/inventory/delete/{id}', [App\Http\Controllers\RoomDataController::class, 'delete'])->name('room_inventory_delete');

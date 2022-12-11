@@ -10,7 +10,7 @@
 </div>
 
 <div class="input-group mb-3">
-    inventory code : <input name="inventory_code" type="number" class="form-control" placeholder="inventory_code" aria-label="inventory_code" aria-describedby="basic-addon1">
+    inventory code : <input name="inventory_code" type="text" class="form-control" placeholder="inventory_code" aria-label="inventory_code" aria-describedby="basic-addon1">
 </div>
 
 <button> Insert New Data </button> 

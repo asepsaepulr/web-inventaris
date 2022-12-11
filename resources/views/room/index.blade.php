@@ -17,9 +17,26 @@
         <td> {{ $data->building_name }} </td>
         <td> {{ $data->floor }} </td>
         <td> {{ $data->updated_at }} </td> 
-        <td colspan=2> <button> <a href="/room/edit/{{ $data->id }}"> edit </a> </button> <button> <a href="/room/details/{{ $data->id }}"> Details </a> </button> <button> <a href="/room/delete/{{ $data->id }}"> Delete </a> </button>  </td>
+        <td colspan=2>
+            <button> <a href="/room/details/{{ $data->id }}"> Details </a> </button>
+            @guest
+
+            @else
+                <button> <a href="/room/edit/{{ $data->id }}"> edit </a> </button>
+                <form action="/room/delete/{{ $data->id }}" method="post">
+                    @csrf
+                    <button type="submit"> Delete </button>
+                </form>
+            @endguest
+        </td>
     </tr> 
     @endforeach
 </table>
-<button> <a href="/room/create"> Create New Data </a> </button>
+
+@guest
+    Please Login To Insert New Data
+@else
+    <button> <a href="/room/create"> Create New Data </a> </button>
+@endguest
+
 @endsection

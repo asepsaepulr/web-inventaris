@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Room;
-use DB;
+use App\Models\RoomData;
+use App\Models\Inventory;
+
 use Carbon\Carbon;
 
 class ManagementRoom extends Controller
@@ -14,13 +16,11 @@ class ManagementRoom extends Controller
         // Validate the request...
         // $validated_data
 
-        DB::table('room')->insert(
-        ['name' => $request->input('name'),
-        'building_name' => $request->input('building_name'),
-        'floor' => $request->input('floor'),
-        'created_at' => Carbon::now()->toDateTimeString(),
-        'updated_at' => Carbon::now()->toDateTimeString()
-    ]);
+        $room = New Room;
+        $room->name = $request->name;
+        $room->building_name = $request->building_name;
+        $room->floor = $request->floor;
+        $room->save();
 
         return redirect()->back()->with('Room Successfully Created');
     }
@@ -30,7 +30,6 @@ class ManagementRoom extends Controller
         return view('room.create');
     }
 
-
     public function delete(Request $request)
     {
         Room::where('id', $request['id'])->delete();
@@ -39,27 +38,27 @@ class ManagementRoom extends Controller
 
     public function update(Request $request, $id)
     {
-        $update_data = DB::table('room')
-              ->where('id', $id)
-              ->update(['name' => $request->input('name'),
-              'building_name' => $request->input('building_name'),
-              'floor' => $request->input('floor'),
-              'updated_at' => Carbon::now()->toDateTimeString()
-            ]);
+        $update_data = Room::find($id);
+        $update_data->name = $request->name;
+        $update_data->building_name = $request->building_name;
+        $update_data->floor = $request->floor;
+        $update_data->save();
+
         return redirect('/room');
         
     }
 
     public function index()
     {
-        $room = DB::table('room')->get();
+        $room = Room::all();
         return view('room.index', ['room' => $room]);
     }
 
     public function details($id)
     {
         $data = Room::where('id', $id)->first();
-        return view('room.details', ['room' => $data]);
+        $room_data = RoomData::where('room_id', $id)->get();
+        return view('room.details', ['room' => $data, "room_data" => $room_data]);
     }
 
     public function store_index()

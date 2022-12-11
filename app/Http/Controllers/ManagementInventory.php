@@ -13,14 +13,11 @@ class ManagementInventory extends Controller
     {
         // Validate the request...
         // $validated_data = 
-        $inventory = new Inventory;
 
-        DB::table('inventory')->insert(
-            ['name' => $request->input('name'),
-            'inventory_code' => $request->input('inventory_code'),
-            'created_at' => Carbon::now()->toDateTimeString(),
-            'updated_at' => Carbon::now()->toDateTimeString()]
-        );
+        $inventory = new Inventory;
+        $inventory->name = $request->name;
+        $inventory->inventory_code = $request->inventory_code;
+        $inventory->save();
 
         return redirect()->back()->with('Inventory Successfully Created');
 
@@ -28,12 +25,11 @@ class ManagementInventory extends Controller
 
     public function update(Request $request, $id)
     {
-        $update_data = DB::table('inventory')
-              ->where('id', $id)
-              ->update(['name' => $request->input('name'),
-              'inventory_code' => $request->input('inventory_code'),
-              'updated_at' => Carbon::now()->toDateTimeString()
-            ]);
+        
+        $inventory = Inventory::find($id);
+        $inventory->name = $request->name;
+        $inventory->inventory_code = $request->inventory_code;
+        $inventory->save();
 
         return redirect('/inventory');
     }

@@ -17,8 +17,9 @@
 </div>
 
 <div class="input-group mb-3">
-    floor : <input name="floor" type="number" class="form-control" placeholder="floor" aria-label="floor" aria-describedby="basic-addon1">
+    floor : <input name="floor" type="text" class="form-control" placeholder="floor" aria-label="floor" aria-describedby="basic-addon1">
 </div>
+
 
 <button> Insert New Data </button> 
 

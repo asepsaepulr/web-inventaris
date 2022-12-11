@@ -17,7 +17,7 @@ class Room extends Migration
             $table->id();
             $table->string('name');
             $table->string('building_name');
-            $table->integer('floor');
+            $table->string('floor');
             $table->timestamps();
         });
     }
