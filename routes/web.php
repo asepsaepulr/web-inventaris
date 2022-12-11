@@ -45,3 +45,22 @@ Route::get('email/verify/{id}/{hash}', [App\Http\Controllers\Auth\VerificationCo
 Route::post('email/resend', [App\Http\Controllers\Auth\VerificationController::class, 'resend'])->name('verification.resend');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+### Inventory
+Route::get('/inventory', [App\Http\Controllers\ManagementInventory::class, 'index'])->name('inventory_index');
+Route::get('/inventory/details/{id}', [App\Http\Controllers\ManagementInventory::class, 'details'])->name('inventory_details');
+Route::get('/inventory/create', [App\Http\Controllers\ManagementInventory::class, 'store_index'])->name('inventory_create');
+Route::post('/inventory/create', [App\Http\Controllers\ManagementInventory::class, 'store'])->name('inventory_create_form');
+Route::get('/inventory/edit/{id}', [App\Http\Controllers\ManagementInventory::class, 'edit_page'])->name('inventory_edit');
+Route::post('/inventory/update/{id}', [App\Http\Controllers\ManagementInventory::class, 'update'])->name('inventory_edit_post');
+Route::get('/inventory/delete/{id}', [App\Http\Controllers\ManagementInventory::class, 'delete'])->name('inventory_delete');
+
+### Room 
+Route::get('/room', [App\Http\Controllers\ManagementRoom::class, 'index'])->name('room_index');
+Route::get('/room/details/{id}', [App\Http\Controllers\ManagementRoom::class, 'details'])->name('room_details');
+Route::get('/room/create', [App\Http\Controllers\ManagementRoom::class, 'store_index'])->name('room_create');
+Route::post('/room/create', [App\Http\Controllers\ManagementRoom::class, 'store'])->name('room_create_form');
+Route::get('/room/edit/{id}', [App\Http\Controllers\ManagementRoom::class, 'edit_page'])->name('room_edit');
+Route::get('/room/delete/{id}', [App\Http\Controllers\ManagementRoom::class, 'delete'])->name('room_delete');
+Route::post('/room/update/{id}', [App\Http\Controllers\ManagementRoom::class, 'update'])->name('room_update');
+
