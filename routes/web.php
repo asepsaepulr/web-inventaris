@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,3 +46,11 @@ Route::get('email/verify/{id}/{hash}', [App\Http\Controllers\Auth\VerificationCo
 Route::post('email/resend', [App\Http\Controllers\Auth\VerificationController::class, 'resend'])->name('verification.resend');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+    Route::resource('user', UserController::class);
+    Route::resource('author', AuthorController::class);
+    Route::resource('publisher', PublisherController::class);
+    Route::resource('book', BookController::class);
+    Route::resource('review', ReviewController::class);
+
