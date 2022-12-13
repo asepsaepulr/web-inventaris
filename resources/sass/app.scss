@@ -1,8 +1,10 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import "~bootstrap/scss/bootstrap";
 
-// Variables
-@import 'variables';
+@import "abstracts/variables";
+@import "base/typography";
+@import "components/button";
+@import "vendor/bootstrap";
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+html {
+  scroll-behavior: smooth;
+}

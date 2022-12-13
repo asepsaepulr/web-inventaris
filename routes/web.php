@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
@@ -44,7 +41,9 @@ Route::get('email/verify', [App\Http\Controllers\Auth\VerificationController::cl
 Route::get('email/verify/{id}/{hash}', [App\Http\Controllers\Auth\VerificationController::class, 'verify'])->name('verification.verify');
 Route::post('email/resend', [App\Http\Controllers\Auth\VerificationController::class, 'resend'])->name('verification.resend');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin|staff']], function () {
+Route::resource('user', UserController::class);
+
 
 ### Inventory
 Route::get('/inventory', [App\Http\Controllers\ManagementInventory::class, 'index'])->name('inventory_index');
@@ -55,7 +54,7 @@ Route::get('/inventory/edit/{id}', [App\Http\Controllers\ManagementInventory::cl
 Route::post('/inventory/update/{id}', [App\Http\Controllers\ManagementInventory::class, 'update'])->name('inventory_edit_post');
 Route::post('/inventory/delete/{id}', [App\Http\Controllers\ManagementInventory::class, 'delete'])->name('inventory_delete');
 
-### Room 
+### Room
 Route::get('/room', [App\Http\Controllers\ManagementRoom::class, 'index'])->name('room_index');
 Route::get('/room/details/{id}', [App\Http\Controllers\ManagementRoom::class, 'details'])->name('room_details');
 Route::get('/room/create', [App\Http\Controllers\ManagementRoom::class, 'store_index'])->name('room_create');
@@ -70,9 +69,6 @@ Route::post('/room/add_inventory', [App\Http\Controllers\RoomDataController::cla
 Route::get('/room/inventory/edit/{id}', [App\Http\Controllers\RoomDataController::class, 'update_index'])->name('room_update_inventory_page');
 Route::post('/room/inventory/edit', [App\Http\Controllers\RoomDataController::class, 'update'])->name('room_update_inventory');
 Route::post('/room/inventory/delete/{id}', [App\Http\Controllers\RoomDataController::class, 'delete'])->name('room_inventory_delete');
+});
 
 
-
-// Route::get('/testing', function () {
-//     return view('layouts.navbar');
-// });
