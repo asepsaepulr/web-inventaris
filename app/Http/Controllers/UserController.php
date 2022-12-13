@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\User;
+use App\Models\Role;
+use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     /**
@@ -11,9 +13,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        return view('user.index');
+        $user = User::paginate(100);
+        return view('user.index',compact('user'))->with('i', (request()->input('page', 1) -1) * 10);
     }
 
     /**
@@ -23,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
@@ -34,7 +38,20 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+        ]);
+
+        $user = User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+        $staffRole = Role::where('name', 'staff')->first();
+        $user->attachRole($staffRole);
+        return redirect()->route('user.index')->with('succes','Data Berhasil di Input');
     }
 
     /**
@@ -79,6 +96,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(!User::destroy($id)) return redirect()->back();
+        return redirect()->route('user.index')->with('succes','User Berhasil di Hapus');
     }
 }

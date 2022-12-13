@@ -40,12 +40,17 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/room"> Rooms </a>
+                    @role('admin')
+                    <li class="nav-item">
+                                <a class="nav-link" href="{{ route('user.index') }}"> Users </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/inventory"> Inventories </a>
+                                <a class="nav-link" href="{{ route('room_index') }}"> Rooms </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('room_index_inventory') }}"> Inventories </a>
+                            </li>
+                            @endrole
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">

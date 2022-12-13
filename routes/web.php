@@ -22,10 +22,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
 Route::post('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
@@ -45,13 +41,8 @@ Route::get('email/verify', [App\Http\Controllers\Auth\VerificationController::cl
 Route::get('email/verify/{id}/{hash}', [App\Http\Controllers\Auth\VerificationController::class, 'verify'])->name('verification.verify');
 Route::post('email/resend', [App\Http\Controllers\Auth\VerificationController::class, 'resend'])->name('verification.resend');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin|staff']], function () {
 Route::resource('user', UserController::class);
-Route::resource('author', AuthorController::class);
-Route::resource('publisher', PublisherController::class);
-Route::resource('book', BookController::class);
-Route::resource('review', ReviewController::class);
 
 
 ### Inventory
@@ -78,3 +69,6 @@ Route::post('/room/add_inventory', [App\Http\Controllers\RoomDataController::cla
 Route::get('/room/inventory/edit/{id}', [App\Http\Controllers\RoomDataController::class, 'update_index'])->name('room_update_inventory_page');
 Route::post('/room/inventory/edit', [App\Http\Controllers\RoomDataController::class, 'update'])->name('room_update_inventory');
 Route::post('/room/inventory/delete/{id}', [App\Http\Controllers\RoomDataController::class, 'delete'])->name('room_inventory_delete');
+});
+
+
