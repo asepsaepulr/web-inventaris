@@ -78,62 +78,62 @@ div.content {
   </style>
 
   <body>
-  <div id="app">
-<!-- TOP NAV BAR -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-white">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="{{url('/images/main-logo.png')}}" /></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-      <ul class="navbar-nav ms-auto">
-      @guest
-        <li class="nav-item">
-          <a class="nav-link" href="{{ route('login') }}" style="color:black;">{{ __('Login') }}</a>
-        </li>
-        @if (Route::has('register'))
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('register') }}" style="color:black;">{{ __('Register') }}</a>
-            </li>
-        @endif
-      @else
-      <img src="{{url('/images/avatar.png')}}" class="avatar"/>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:black;">
-          {{ Auth::user()->name }}
-          </a>
-          <ul class="dropdown-menu dropdown-menu-white">
-            <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-            {{ __('Logout') }}
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
-            </a></li>
-          </ul>
-        </li>
-        @endguest
-      </ul>
-    </div>
-  </div>
-</nav>
+    <div id="app">
+      <!-- TOP NAV BAR -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-white">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><img src="{{url('/images/main-logo.png')}}" /></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+            <ul class="navbar-nav ms-auto">
+                @guest
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}" style="color:black;">{{ __('Login') }}</a>
+                  </li>
+                  @if (Route::has('register'))
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}" style="color:black;">{{ __('Register') }}</a>
+                      </li>
+                  @endif
+                @else
+                <img src="{{url('/images/avatar.png')}}" class="avatar"/>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:black;">
+                  {{ Auth::user()->name }}
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-white">
+                    <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                            document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                    </a></li>
+                  </ul>
+                </li>
+                @endguest
+            </ul>
+          </div>
+        </div>
+      </nav>
 
-  <!-- The sidebar -->
+      <!-- The sidebar -->
       <div class="sidebar">
         @guest
 
         @else
-        <a href=""> <img src="{{url('/images/dashboard-logo.png')}}"> Dashboard </a>
-        <a href=""> <img src="{{url('/images/user-logo.png')}}"> Users</a>
+          <a href=""> <img src="{{url('/images/dashboard-logo.png')}}"> Dashboard </a>
+          <a href=""> <img src="{{url('/images/user-logo.png')}}"> Users</a>
         @endguest
-        <a href="/room"> <img src="{{url('/images/room-logo.png')}}"> Room </a>
-        <a href="/inventory"> <img src="{{url('/images/inventory-logo.png')}}"> Inventory </a>
+          <a href="/room"> <img src="{{url('/images/room-logo.png')}}"> Room </a>
+          <a href="/inventory"> <img src="{{url('/images/inventory-logo.png')}}"> Inventory </a>
       </div>
+
       <div class="content">
           @yield('content')
       </div>
-
-</div>
+    </div>
   </body>
 </html>
