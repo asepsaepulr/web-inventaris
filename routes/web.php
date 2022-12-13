@@ -70,3 +70,9 @@ Route::post('/room/add_inventory', [App\Http\Controllers\RoomDataController::cla
 Route::get('/room/inventory/edit/{id}', [App\Http\Controllers\RoomDataController::class, 'update_index'])->name('room_update_inventory_page');
 Route::post('/room/inventory/edit', [App\Http\Controllers\RoomDataController::class, 'update'])->name('room_update_inventory');
 Route::post('/room/inventory/delete/{id}', [App\Http\Controllers\RoomDataController::class, 'delete'])->name('room_inventory_delete');
+
+
+
+// Route::get('/testing', function () {
+//     return view('layouts.navbar');
+// });
