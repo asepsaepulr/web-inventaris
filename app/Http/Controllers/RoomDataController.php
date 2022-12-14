@@ -18,7 +18,7 @@ class RoomDataController extends Controller
         $roomdata->inventory_id = $request->inventory_id;
         $roomdata->save();
 
-        return redirect('/room');
+        return redirect()->route('room_index')->with('succes','Inventory Ruangan Berhasil Ditambahkan');
     }
 
     public function index()
@@ -42,13 +42,13 @@ class RoomDataController extends Controller
             $roomdata->quantity = $request->quantity;
             $roomdata->save();
         }
-        return redirect('/room');
+        return redirect()->route('room_index')->with('succes','Inventory Ruangan Berhasil Di Update');
     }
 
     public function delete($id)
     {
         $roomdata = RoomData::find($id);
         $roomdata->delete();
-        return redirect('/room');
+        return redirect()->route('room_index')->with('succes','Inventory Ruangan Berhasil Dihapus');
     }
 }

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="/room/inventory/edit" method="post">
+<form action="{{ route('room_update_inventory') }}" method="post">
 @csrf
 
 Room Name: 

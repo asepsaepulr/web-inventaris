@@ -2,7 +2,7 @@
 
 @section('content')
 <div>
-  <form method="post" action="{{url('/inventory/create')}}"> 
+  <form method="post" action="{{ route('inventory_create_form') }}"> 
     @csrf
     <h1> Insert New Inventory Data </h1> 
 
@@ -13,7 +13,7 @@
     <div class="input-group mb-3">
         inventory code : <input name="inventory_code" type="text" class="form-control" placeholder="inventory_code" aria-label="inventory_code" aria-describedby="basic-addon1">
     </div>
-
+    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
     <button> Insert New Data </button> 
 
   </form> 

@@ -3,7 +3,7 @@
 @section('content')
 
 <div>
-    <form method="post" action="/inventory/update/{{ $inventory->id }}">
+    <form method="post" action="{{ route('inventory_edit_post', $inventory->id) }}">
     @csrf
     Inventory Name : <input name="name" type="text" value="{{$inventory->name}}"> <br>
     Inventory Code : <input name="inventory_code" type="text" value="{{$inventory->inventory_code}}"> <br> 

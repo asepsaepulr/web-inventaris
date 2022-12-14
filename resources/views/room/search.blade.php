@@ -32,19 +32,17 @@
         <th> Building Name </th>
         <th> Floor </th>
         <th> Last Updated </th> 
-        <th> Updated By </th> 
         <th colspan=2> Action </th>
     </tr>
   </thead>
     <tbody>
-    @foreach ($room as $data)
+    @foreach ($result as $data)
     <tr>
         <td> {{ $data->id }} </td>
         <td> {{ $data->name }} </td>
         <td> {{ $data->building_name }} </td>
         <td> {{ $data->floor }} </td>
         <td> {{ $data->updated_at }} </td> 
-        <td> {!! App\Models\User::where('id', $data->updated_by)->first()->name; !!} </td> 
         <td colspan=2>
             <button> <a href="{{ route('room_details', $data->id) }}"> Details </a> </button>
             @guest

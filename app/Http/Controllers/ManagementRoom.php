@@ -20,9 +20,10 @@ class ManagementRoom extends Controller
         $room->name = $request->name;
         $room->building_name = $request->building_name;
         $room->floor = $request->floor;
+        $room->updated_by = $request->user_id;
         $room->save();
 
-        return redirect()->back()->with('Room Successfully Created');
+        return redirect()->route('room_index')->with('succes','Room Berhasil Ditambahkan');
     }
 
     public function store_create(Request $request)
@@ -33,7 +34,7 @@ class ManagementRoom extends Controller
     public function delete(Request $request)
     {
         Room::where('id', $request['id'])->delete();
-        return redirect('/room');
+        return redirect()->route('room_index')->with('succes','Room Berhasil Dihapus');
     }
 
     public function update(Request $request, $id)
@@ -42,9 +43,10 @@ class ManagementRoom extends Controller
         $update_data->name = $request->name;
         $update_data->building_name = $request->building_name;
         $update_data->floor = $request->floor;
+        $update_data->updated_by = $request->user_id;
         $update_data->save();
 
-        return redirect('/room');
+        return redirect()->route('room_index')->with('succes','Data Berhasil di Input');
         
     }
 
@@ -70,5 +72,11 @@ class ManagementRoom extends Controller
     {
         $data = Room::where('id', $id)->first();
         return view('room.edit', ['data' => $data]);
+    }
+
+    public function search(Request $request)
+    {
+        $result = Room::where('name', 'Like', '%' . $request->search . '%')->get();
+        return view('room.search', ['result' => $result, 'request' => $request]);
     }
 }

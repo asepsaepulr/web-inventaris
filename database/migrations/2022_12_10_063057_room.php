@@ -18,6 +18,8 @@ class Room extends Migration
             $table->string('name');
             $table->string('building_name');
             $table->string('floor');
+            $table->unsignedBigInteger('updated_by');
+            $table->foreign('updated_by')->references('id')->on('users');
             $table->timestamps();
         });
     }

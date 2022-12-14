@@ -7,13 +7,19 @@
     Building Name : {{ $room->building_name }} </br>
     Floor : {{ $room->floor }} </br>
     List Inventory : 
-    <table border=1> 
-        <tr> 
-            <th> Name </th> 
-            <th> Quantity </th> 
-            <th> Status </th> 
-            <th> Action </th>
-        </tr>
+    <div class="float-right">
+                <a class="btn btn-success" href="{{ route('room_index_inventory') }}"> Add Inventory Into Room </a>
+            </div>
+    <table class="table"> 
+        <thead>
+            <tr> 
+                <th> Name </th> 
+                <th> Quantity </th> 
+                <th> Status </th> 
+                <th> Action </th>
+            </tr>
+        </thead>
+        <tbody>
         @foreach ($room_data as $data_room)
         <tr> 
             <td> {!! App\Models\Inventory::where('id', $data_room->inventory_id)->first()->name; !!} </td>
@@ -29,9 +35,9 @@
                 @guest
                     Not logged In
                 @else    
-                    <button> <a href="/room/inventory/edit/{{ $data_room->id }}"> <img src="{{url('/images/edit.png')}}"> </a> </button>   
+                    <button> <a href="{{ route('room_update_inventory_page', $data_room->id) }}"> <img src="{{url('/images/edit.png')}}"> </a> </button>   
 
-                    <form action="/room/inventory/delete/{{ $data_room->id }}" method="post">
+                    <form action="{{ route('room_inventory_delete', $data_room->id) }}" method="post">
                         @csrf
                         <button type="submit"> <img src="{{url('/images/delete.png')}}"> </button>
                     </form>
@@ -39,6 +45,7 @@
             </td> 
         </tr>
         @endforeach
+        </tbody>
     </table> 
 </div>
 

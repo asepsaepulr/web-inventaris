@@ -53,6 +53,7 @@ Route::post('/inventory/create', [App\Http\Controllers\ManagementInventory::clas
 Route::get('/inventory/edit/{id}', [App\Http\Controllers\ManagementInventory::class, 'edit_page'])->name('inventory_edit');
 Route::post('/inventory/update/{id}', [App\Http\Controllers\ManagementInventory::class, 'update'])->name('inventory_edit_post');
 Route::post('/inventory/delete/{id}', [App\Http\Controllers\ManagementInventory::class, 'delete'])->name('inventory_delete');
+Route::post('/inventory/search', [App\Http\Controllers\ManagementInventory::class, 'search'])->name('inventory_search');
 
 ### Room
 Route::get('/room', [App\Http\Controllers\ManagementRoom::class, 'index'])->name('room_index');
@@ -62,6 +63,7 @@ Route::post('/room/create', [App\Http\Controllers\ManagementRoom::class, 'store'
 Route::get('/room/edit/{id}', [App\Http\Controllers\ManagementRoom::class, 'edit_page'])->name('room_edit');
 Route::post('/room/delete/{id}', [App\Http\Controllers\ManagementRoom::class, 'delete'])->name('room_delete');
 Route::post('/room/update/{id}', [App\Http\Controllers\ManagementRoom::class, 'update'])->name('room_update');
+Route::post('/room/search', [App\Http\Controllers\ManagementRoom::class, 'search'])->name('room_search');
 
 ### Room Data
 Route::get('/room/add_inventory', [App\Http\Controllers\RoomDataController::class, 'index'])->name('room_index_inventory');
@@ -71,4 +73,6 @@ Route::post('/room/inventory/edit', [App\Http\Controllers\RoomDataController::cl
 Route::post('/room/inventory/delete/{id}', [App\Http\Controllers\RoomDataController::class, 'delete'])->name('room_inventory_delete');
 });
 
+
+// test
 

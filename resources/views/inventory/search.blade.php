@@ -31,13 +31,13 @@
             </tr>
         </thead>
         <tbody>
-        @foreach ($inventory as $data)
+        @foreach ($result as $data)
         <tr>
             <td> {{$data->id }}</td>
             <td> {{$data->name}} </td>
             <td> {{$data->inventory_code}} </td>
             <td> {{$data->created_at}}</td>
-            <td> {!! App\Models\User::where('id', $data->created_by)->first()->name; !!} </td> 
+            <td> Created By User </td> 
             <td colspan=2> 
                 <button> <a href="{{ route('inventory_details', $data->id) }}"> Details </a> </button>
                 @guest

@@ -17,9 +17,10 @@ class ManagementInventory extends Controller
         $inventory = new Inventory;
         $inventory->name = $request->name;
         $inventory->inventory_code = $request->inventory_code;
+        $inventory->created_by = $request->user_id;
         $inventory->save();
 
-        return redirect()->back()->with('Inventory Successfully Created');
+        return redirect()->route('inventory_index')->with('succes','Inventory Berhasil Ditambahkan');
 
     }
 
@@ -31,7 +32,7 @@ class ManagementInventory extends Controller
         $inventory->inventory_code = $request->inventory_code;
         $inventory->save();
 
-        return redirect('/inventory');
+        return redirect()->route('inventory_index')->with('succes','Inventory Berhasil Diupdate');
     }
 
     public function edit_page($id)
@@ -64,6 +65,10 @@ class ManagementInventory extends Controller
        return view('inventory.details', ['data' => $data]);
     }
 
-
+    public function search(Request $request)
+    {
+        $result = Inventory::where('name', 'Like', '%' . $request->search . '%')->get();
+        return view('inventory.search', ['result' => $result, 'request' => $request]);
+    }
     
 }

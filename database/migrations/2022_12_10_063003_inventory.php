@@ -17,6 +17,8 @@ class Inventory extends Migration
             $table->id();
             $table->string('name');
             $table->string('inventory_code')->unique();
+            $table->unsignedBigInteger('created_by');
+            $table->foreign('created_by')->references('id')->on('users');
             $table->timestamps();
         });
     }

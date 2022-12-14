@@ -3,7 +3,7 @@
 @section('content')
 
 <div>
-    <form action="/room/add_inventory" method="post">
+    <form action="{{ route('room_store_inventory') }}" method="post">
     @csrf
     <div class="input-group mb-3">
         Room Name: 
