@@ -1,14 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<table border=1> 
+<div>
+<table class="table" style="background-color:white;border-radius:10px;"> 
     <tr>
-        <th> ID </th>
-        <th> Room Name </th>
-        <th> Building Name </th>
-        <th> Floor </th>
-        <th> Last Updated </th> 
-        <th colspan=2> Action </th>
+        <th style="color:#3A57E8;"> ID </th>
+        <th style="color:#3A57E8;"> Room Name </th>
+        <th style="color:#3A57E8;"> Building Name </th>
+        <th style="color:#3A57E8;"> Floor </th>
+        <th style="color:#3A57E8;"> Last Updated </th> 
+        <th colspan=2 style="color:#3A57E8;"> Action </th>
     </tr> 
     @foreach ($room as $data)
     <tr>
@@ -22,10 +23,10 @@
             @guest
 
             @else
-                <button> <a href="/room/edit/{{ $data->id }}"> edit </a> </button>
+                <a href="/room/edit/{{ $data->id }}"> <img src="{{url('/images/edit.png')}}"> </a>
                 <form action="/room/delete/{{ $data->id }}" method="post">
                     @csrf
-                    <button type="submit"> Delete </button>
+                    <button type="submit"> <img src="{{url('/images/delete.png')}}"> </button>
                 </form>
             @endguest
         </td>
@@ -39,4 +40,5 @@
     <button> <a href="/room/create"> Create New Data </a> </button>
 @endguest
 
+<div>
 @endsection
