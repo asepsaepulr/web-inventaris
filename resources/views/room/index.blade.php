@@ -42,7 +42,7 @@
         <td> {{ $data->id }} </td>
         <td> {{ $data->name }} </td>
         <td> {{ $data->building_name }} </td>
-        <td> {{ $data->building_name }} </td>
+        <td> {{ $data->floor }} </td>
         <td> {{ $data->updated_at }} </td>
         <td> {!! App\Models\User::where('id', $data->updated_by)->first()->name; !!} </td>
         <td colspan=2>
