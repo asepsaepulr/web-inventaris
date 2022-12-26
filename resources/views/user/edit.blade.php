@@ -60,7 +60,7 @@
                            <div class="row">
                               <div class="form-group col-md-6">
                                  <label class="form-label" for="uname">User Name:</label>
-                                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" required autofocus placeholder="User Name">
+                                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" required autocomplete="name" value="{{ $user->name }}" autofocus placeholder="User Name">
                                  @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -69,7 +69,7 @@
                                 </div>
                               <div class="form-group col-md-6">
                                  <label class="form-label" for="email">Email:</label>
-                                 <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" id="email" placeholder="Email">
+                                 <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" required autocomplete="email" value="{{ $user->email }}" id="email" placeholder="Email">
                                  @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
