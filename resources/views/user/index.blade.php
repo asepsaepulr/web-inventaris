@@ -12,7 +12,7 @@
 
   @endif
 
-  <div class="row">
+  <div class="row ">
 
     <div class="col-sm-12">
 
@@ -27,9 +27,9 @@
                       <ol class="breadcrumb">
 
                           <li class="breadcrumb-item">
-                            
+
                             <h5 class="fw-bold">
-                      
+
                                   Users Management
 
                             </h5>
@@ -44,7 +44,7 @@
 
               </div>
 
-              
+
 
               </div>
 
@@ -65,12 +65,12 @@
               <div class="table-responsive">
 
                 <table id="user-list-table" class="table table-striped" role="grid" data-toggle="data-table">
-                    
+
                     <thead>
 
                       <tr class="ligth">
 
-                          <th>No</th>
+                          <th>#</th>
 
                           <th>Name</th>
 
@@ -83,7 +83,7 @@
                           <th style="min-width: 100px">Action</th>
 
                       </tr>
-                      
+
                     </thead>
 
                     <tbody>
@@ -98,14 +98,14 @@
 
                             <td>{{ $data->email}}</td>
 
-                            <td> 
-                                
+                            <td>
+
                                 @foreach ($data->roles as $role)
 
                                   {{ $role->name }}
 
                                 @endforeach
-                          
+
                             </td>
 
                             <td>{{ $data->created_at}}</td>
@@ -142,17 +142,17 @@
                                       @method('DELETE')
 
                                       <button type="submit" class="btn btn-sm btn-icon btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" href="#">
-                                        
+
                                         <span class="btn-inner">
 
                                             <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
 
                                               <path d="M19.3248 9.46826C19.3248 9.46826 18.7818 16.2033 18.4668 19.0403C18.3168 20.3953 17.4798 21.1893 16.1088 21.2143C13.4998 21.2613 10.8878 21.2643 8.27979 21.2093C6.96079 21.1823 6.13779 20.3783 5.99079 19.0473C5.67379 16.1853 5.13379 9.46826 5.13379 9.46826" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                              
+
                                               <path d="M20.708 6.23975H3.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                              
+
                                               <path d="M17.4406 6.23973C16.6556 6.23973 15.9796 5.68473 15.8256 4.91573L15.5826 3.69973C15.4326 3.13873 14.9246 2.75073 14.3456 2.75073H10.1126C9.53358 2.75073 9.02558 3.13873 8.87558 3.69973L8.63258 4.91573C8.47858 5.68473 7.80258 6.23973 7.01758 6.23973" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                            
+
                                             </svg>
 
                                         </span>
@@ -196,10 +196,10 @@
                     <span class="btn-inner">
 
                       <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          
+
                           <path fill-rule="evenodd" clip-rule="evenodd" d="M7.33 2H16.66C20.06 2 22 3.92 22 7.33V16.67C22 20.06 20.07 22 16.67 22H7.33C3.92 22 2 20.06 2 16.67V7.33C2 3.92 3.92 2 7.33 2ZM12.82 12.83H15.66C16.12 12.82 16.49 12.45 16.49 11.99C16.49 11.53 16.12 11.16 15.66 11.16H12.82V8.34C12.82 7.88 12.45 7.51 11.99 7.51C11.53 7.51 11.16 7.88 11.16 8.34V11.16H8.33C8.11 11.16 7.9 11.25 7.74 11.4C7.59 11.56 7.5 11.769 7.5 11.99C7.5 12.45 7.87 12.82 8.33 12.83H11.16V15.66C11.16 16.12 11.53 16.49 11.99 16.49C12.45 16.49 12.82 16.12 12.82 15.66V12.83Z" fill="currentColor"></path>
-                      
-                      </svg>                        
+
+                      </svg>
 
                     </span>
 
