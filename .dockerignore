@@ -13,3 +13,4 @@ yarn-error.log
 notes.txt
 /helm
 test-asset
+composer.lock
