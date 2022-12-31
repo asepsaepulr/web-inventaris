@@ -4,7 +4,7 @@ image:
   repository: fmaulana24/pbo
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v21"
+  tag: "v22"
 
 imagePullSecrets: []
 nameOverride: ""
