@@ -11,14 +11,28 @@ class RoomDataController extends Controller
 {
     public function store(Request $request)
     {
+        if (RoomData::where('inventory_id', $request->inventory_id)->exists()){
+            return redirect()->back()->with(['error' => 'Inventory Already Exists']);
+        } else {
+
+        $validatedData = $request->validate([
+            'status' => ['required'],
+            'quantity' => ['required','integer'],
+            'room_id' => ['required', 'integer'],
+            'inventory_id' => ['required', 'integer'],
+        ]);
+
+
         $roomdata = new RoomData;
-        $roomdata->status = $request->status;
-        $roomdata->quantity = $request->quantity;
-        $roomdata->room_id = $request->room_id;
-        $roomdata->inventory_id = $request->inventory_id;
+        $roomdata->status = $validatedData['status'];
+        $roomdata->quantity = $validatedData['quantity'];
+        $roomdata->room_id = $validatedData['room_id'];
+        $roomdata->inventory_id = $validatedData['inventory_id'];
         $roomdata->save();
 
-        return redirect()->route('room_index')->with('succes','Inventory Ruangan Berhasil Ditambahkan');
+        return redirect()->route('room_details', $request->room_id);
+
+        }
     }
 
     public function index()
@@ -42,13 +56,13 @@ class RoomDataController extends Controller
             $roomdata->quantity = $request->quantity;
             $roomdata->save();
         }
-        return redirect()->route('room_index')->with('succes','Inventory Ruangan Berhasil Di Update');
+        return redirect()->route('room_details', $request->room_id);
     }
 
     public function delete($id)
     {
         $roomdata = RoomData::find($id);
         $roomdata->delete();
-        return redirect()->route('room_index')->with('succes','Inventory Ruangan Berhasil Dihapus');
+        return redirect()->back()->with(['success' => 'Inventory Ruangan Berhasil Dihapus']);
     }
 }

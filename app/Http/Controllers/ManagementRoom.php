@@ -13,17 +13,18 @@ class ManagementRoom extends Controller
 {
     public function store(Request $request)
     {
-        // Validate the request...
-        // $validated_data
-
-        $room = New Room;
-        $room->name = $request->name;
-        $room->building_name = $request->building_name;
-        $room->floor = $request->floor;
-        $room->updated_by = $request->user_id;
-        $room->save();
-
-        return redirect()->route('room_index')->with('succes','Room Berhasil Ditambahkan');
+        if (Room::where('name', $request->name)->where('building_name', $request->building_name)->exists()) {
+            return redirect()->back()->with(['error' => 'Room Already Exists']);
+        } else {
+            $room = New Room;
+            $room->name = $request->name;
+            $room->building_name = $request->building_name;
+            $room->floor = $request->floor;
+            $room->updated_by = $request->user_id;
+            $room->save();
+    
+            return redirect()->route('room_index')->with('succes','Room Berhasil Ditambahkan');
+        }
     }
 
     public function store_create(Request $request)
