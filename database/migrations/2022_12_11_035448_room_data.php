@@ -18,9 +18,9 @@ class RoomData extends Migration
             $table->string('status');//1 good, 0 out of order
             $table->string('quantity');
             $table->unsignedBigInteger('room_id');
-            $table->foreign('room_id')->references('id')->on('room');
+            $table->foreign('room_id')->references('id')->on('room')->onDelete('cascade');
             $table->unsignedBigInteger('inventory_id');
-            $table->foreign('inventory_id')->references('id')->on('inventory');
+            $table->foreign('inventory_id')->references('id')->on('inventory')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ class Inventory extends Migration
         Schema::create('inventory', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('inventory_code')->unique();
+            $table->integer('inventory_code')->unique();
             $table->unsignedBigInteger('created_by');
             $table->foreign('created_by')->references('id')->on('users');
             $table->timestamps();

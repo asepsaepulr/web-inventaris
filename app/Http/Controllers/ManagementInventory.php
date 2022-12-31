@@ -11,16 +11,26 @@ class ManagementInventory extends Controller
 {
     public function store(Request $request)
     {
-        // Validate the request...
-        // $validated_data = 
 
-        $inventory = new Inventory;
-        $inventory->name = $request->name;
-        $inventory->inventory_code = $request->inventory_code;
-        $inventory->created_by = $request->user_id;
-        $inventory->save();
+        if (Inventory::where('name', $request->name)->exists()){
+            return redirect()->back()->with(['error' => 'Inventory Already Exists']);
+        } else {
+            $validatedData = $request->validate([
+                'inventory_code' => ['required', 'integer'],
+                'name' => ['required'],
+                'user_id' => ['required'],
+            ]);
 
-        return redirect()->route('inventory_index')->with('succes','Inventory Berhasil Ditambahkan');
+            $inventory = new Inventory;
+            $inventory->name = $validatedData["name"];
+            $inventory->inventory_code = $validatedData["inventory_code"];
+            $inventory->created_by = $validatedData["user_id"];
+            $inventory->save();
+
+            return redirect()->route('inventory_index')->with('succes','Inventory Berhasil Ditambahkan');
+        }
+
+
 
     }
 
@@ -55,7 +65,7 @@ class ManagementInventory extends Controller
 
     public function index()
     {
-        $inventory = Inventory::all();
+        $inventory = Inventory::get();
         return view('inventory.index', ['inventory' => $inventory]);
     }
 
