@@ -38,6 +38,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        if (User::where('email', $request->email)->exists()){
+            return redirect()->back()->with(['error' => 'Email Already Exists']);
+        } else {
         $this->validate($request,[
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -52,6 +55,7 @@ class UserController extends Controller
         $staffRole = Role::where('name', 'staff')->first();
         $user->attachRole($staffRole);
         return redirect()->route('user.index')->with('succes','Data Berhasil di Input');
+    }
     }
 
     /**

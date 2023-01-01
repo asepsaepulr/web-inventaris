@@ -2,6 +2,21 @@
 
 @section('content')
 
+@if ($message = Session::get('error'))
+    <div class="alert alert-danger alert-block">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <strong>{{ $message }}</strong>
+    </div>
+  @elseif ($errors->any())
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+  @endif
+
    <div class="row">
 
       <div class="col-sm-12">
@@ -17,9 +32,9 @@
                            <ol class="breadcrumb">
 
                               <li class="breadcrumb-item">
-                                 
+
                                  <h5 class="fw-bold">
-                           
+
                                        Users Management
 
                                  </h5>
@@ -118,7 +133,7 @@
                         @csrf
                      <div class="row">
                         <div class="form-group col-md-6">
-                           <label class="form-label" for="uname">User Name:</label>
+                           <label class="form-label" for="uname">Name:</label>
                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" required autocomplete="name" autofocus placeholder="User Name">
                            @error('name')
                               <span class="invalid-feedback" role="alert">

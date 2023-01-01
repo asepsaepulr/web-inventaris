@@ -59,7 +59,7 @@
                             @csrf
                            <div class="row">
                               <div class="form-group col-md-6">
-                                 <label class="form-label" for="uname">User Name:</label>
+                                 <label class="form-label" for="uname">Name:</label>
                                  <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" required autocomplete="name" value="{{ $user->name }}" autofocus placeholder="User Name">
                                  @error('name')
                                     <span class="invalid-feedback" role="alert">
