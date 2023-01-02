@@ -2,112 +2,113 @@
 
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-<head>
+  <head>
 
-    <meta charset="utf-8">
+      <meta charset="utf-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title> ROOMZIO </title>
+      <title> ROOMZIO </title>
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+      <!-- CSRF Token -->
+      <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+      <!-- Fonts -->
+      <link rel="dns-prefetch" href="//fonts.gstatic.com">
 
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.ico" />
+      <!-- Favicon -->
+      <link rel="icon" type="image/png" href="{{ asset('images/favicon/favicon.ico') }}"/>
 
-    <!-- Library / Plugin Css Build -->
-    <link rel="stylesheet" href="{{ asset('css/core/libs.min.css') }}" />
+      <!-- Library / Plugin Css Build -->
+      <link rel="stylesheet" href="{{ asset('css/core/libs.min.css') }}" />
 
-    <!-- Hope Ui Design System Css -->
-    <link rel="stylesheet" href="{{ asset('css/hope-ui.min.css?v=1.2.0') }}" />
+      <!-- Hope Ui Design System Css -->
+      <link rel="stylesheet" href="{{ asset('css/hope-ui.min.css?v=1.2.0') }}" />
 
-    <!-- Custom Css -->
-    <link rel="stylesheet" href="{{ asset('css/custom.min.css?v=1.2.0') }}" />
+      <!-- Custom Css -->
+      <link rel="stylesheet" href="{{ asset('css/custom.min.css?v=1.2.0') }}" />
 
-    <!-- Dark Css -->
-    <link rel="stylesheet" href="{{ asset('css/dark.min.css') }}"/>
+      <!-- Dark Css -->
+      <link rel="stylesheet" href="{{ asset('css/dark.min.css') }}"/>
 
-    <!-- Customizer Css -->
-    <link rel="stylesheet" href="{{ asset('css/customizer.min.css') }}" />
+      <!-- Customizer Css -->
+      <link rel="stylesheet" href="{{ asset('css/customizer.min.css') }}" />
 
-    <!-- RTL Css -->
-    <link rel="stylesheet" href="{{ asset('css/rtl.min.css') }}"/>
+      <!-- RTL Css -->
+      <link rel="stylesheet" href="{{ asset('css/rtl.min.css') }}"/>
 
-</head>
+  </head>
 
-<body>
+  <body>
 
-    <!-- loader Start -->
+      <!-- loader Start -->
 
-    <div id="loading">
+      <div id="loading">
 
-      <div class="loader simple-loader">
+        <div class="loader simple-loader">
 
-          <div class="loader-body"></div>
+            <div class="loader-body"></div>
 
-      </div>    
-
-    </div>
-
-    <!-- loader END -->
-
-    <!--Sidebar Start-->
-
-      @section('sidebar')
-
-        @include('layouts.sidebar')
-
-      @show
-
-    <!--Sidebar End-->
-
-    <main class="main-content">
-
-      <div class="position-relative iq-banner">
-
-        <!--Nav Start-->
-
-          @section('nav')
-
-            @include('layouts.nav')
-
-          @show
-
-        <!--Nav End-->
+        </div>    
 
       </div>
 
-      <div class="conatiner-fluid content-inner mt-n5 py-0">
+      <!-- loader END -->
 
-        <div>
-        
-          @yield('content')
+      <!--Sidebar Start-->
 
-        </div>
+        @section('sidebar')
 
-      </div>
-
-      <!-- Footer Section Start -->
-
-        @section('footer')
-
-          @include('layouts.footer')
+          @include('layouts.sidebar')
 
         @show
 
-      <!-- Footer Section End -->
+      <!--Sidebar End-->
 
-    </main>
+      <main class="main-content">
 
-    <!-- Wrapper End-->
+        <div class="position-relative iq-banner">
 
-</body>
+          <!--Nav Start-->
+
+            @section('nav')
+
+              @include('layouts.nav')
+
+            @show
+
+          <!--Nav End-->
+
+        </div>
+
+        <div class="conatiner-fluid content-inner mt-n5 py-0">
+
+          <div>
+          
+            @yield('content')
+
+          </div>
+
+        </div>
+
+        <!-- Footer Section Start -->
+
+          @section('footer')
+
+            @include('layouts.footer')
+
+          @show
+
+        <!-- Footer Section End -->
+
+      </main>
+
+      <!-- Wrapper End-->
+
+  </body>
+
 </html>
 
 <!-- Scripts -->
