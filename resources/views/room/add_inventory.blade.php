@@ -54,7 +54,7 @@
                         <input type="hidden" value="{{ $room_data->id }}" name="room_id"> </input>
                         @endforeach
                         Room Name: 
-                            <select name="room_id">
+                            <select>
                                 @foreach ($room as $room_data)
                                 <option value="{{$room_data->id}}"> {{$room_data->name}} </option>
                                 @endforeach
