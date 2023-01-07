@@ -1,12 +1,17 @@
 <!doctype html>
+
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
+
+   <head>
+      
+      <meta charset="utf-8">
+
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>Hope UI | Responsive Bootstrap 5 Admin Dashboard Template</title>
+
+      <title> ROOMZIO </title>
 
       <!-- Favicon -->
-      <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}" />
+      <link rel="icon" type="image/png" href="{{ asset('images/favicon/favicon.ico') }}"/>
 
       <!-- Library / Plugin Css Build -->
       <link rel="stylesheet" href="{{ asset('css/core/libs.min.css') }}" />
@@ -27,14 +32,15 @@
       <!-- RTL Css -->
       <link rel="stylesheet" href="{{ asset('css/rtl.min.css') }}"/>
 
-  </head>
-  <body class=" " data-bs-spy="scroll" data-bs-target="#elements-section" data-bs-offset="0" tabindex="0">
-    <!-- loader Start -->
-    <div id="loading">
+   </head>
+
+   <body class=" " data-bs-spy="scroll" data-bs-target="#elements-section" data-bs-offset="0" tabindex="0">
+      <!-- loader Start -->
+      <div id="loading">
       <div class="loader simple-loader">
-          <div class="loader-body"></div>
+            <div class="loader-body"></div>
       </div>    </div>
-    <!-- loader END -->
+      <!-- loader END -->
 
       <div class="wrapper">
       <section class="login-content">
@@ -45,16 +51,6 @@
             <div class="col-md-6 p-0">
                <div class="card card-transparent auth-card shadow-none d-flex justify-content-center mb-0">
                   <div class="card-body">
-                     <a href="../../dashboard/index.html" class="navbar-brand d-flex align-items-center mb-3">
-                        <!--Logo start-->
-                        <svg width="30" class="" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="-0.757324" y="19.2427" width="28" height="4" rx="2" transform="rotate(-45 -0.757324 19.2427)" fill="currentColor"/>
-                            <rect x="7.72803" y="27.728" width="28" height="4" rx="2" transform="rotate(-45 7.72803 27.728)" fill="currentColor"/>
-                            <rect x="10.5366" y="16.3945" width="16" height="4" rx="2" transform="rotate(45 10.5366 16.3945)" fill="currentColor"/>
-                            <rect x="10.5562" y="-0.556152" width="28" height="4" rx="2" transform="rotate(45 10.5562 -0.556152)" fill="currentColor"/>
-                        </svg>
-                        <!--logo End-->                        <h4 class="logo-title ms-3">Hope UI</h4>
-                     </a>
                      <h2 class="mb-2">Reset Password</h2>
                      <p>Enter your email address and we'll send you an email with instructions to reset your password.</p>
                      <form method="POST" action="{{ route('password.email') }}">
@@ -62,22 +58,22 @@
                         <div class="row">
                         @if (session('status'))
                         <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                              {{ session('status') }}
                         </div>
-                    @endif
+                     @endif
                            <div class="col-lg-12">
                               <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                              <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                              <div class="col-md-6">
+                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                                @error('email')
+                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                          <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
-                            </div>
+                                 @enderror
+                              </div>
                         </div>
                            </div>
                         </div>
@@ -100,34 +96,35 @@
       </section>
       </div>
 
-    <!-- Library Bundle Script -->
-    <script src="{{ asset('js/core/libs.min.js') }}"></script>
+      <!-- Library Bundle Script -->
+      <script src="{{ asset('js/core/libs.min.js') }}"></script>
 
-    <!-- External Library Bundle Script -->
-    <script src="{{ asset('js/core/external.min.js') }}"></script>
+      <!-- External Library Bundle Script -->
+      <script src="{{ asset('js/core/external.min.js') }}"></script>
 
-    <!-- Widgetchart Script -->
-    <script src="{{ asset('js/charts/widgetcharts.js') }}"></script>
+      <!-- Widgetchart Script -->
+      <script src="{{ asset('js/charts/widgetcharts.js') }}"></script>
 
-    <!-- mapchart Script -->
-    <script src="{{ asset('js/charts/vectore-chart.js') }}"></script>
-    <script src="{{ asset('js/charts/dashboard.js') }}" ></script>
+      <!-- mapchart Script -->
+      <script src="{{ asset('js/charts/vectore-chart.js') }}"></script>
+      <script src="{{ asset('js/charts/dashboard.js') }}" ></script>
 
-    <!-- fslightbox Script -->
-    <script src="{{ asset('js/plugins/fslightbox.js') }}"></script>
+      <!-- fslightbox Script -->
+      <script src="{{ asset('js/plugins/fslightbox.js') }}"></script>
 
-    <!-- Settings Script -->
-    <script src="{{ asset('js/plugins/setting.js') }}"></script>
+      <!-- Settings Script -->
+      <script src="{{ asset('js/plugins/setting.js') }}"></script>
 
-    <!-- Slider-tab Script -->
-    <script src="{{ asset('js/plugins/slider-tabs.js') }}"></script>
+      <!-- Slider-tab Script -->
+      <script src="{{ asset('js/plugins/slider-tabs.js') }}"></script>
 
-    <!-- Form Wizard Script -->
-    <script src="{{ asset('js/plugins/form-wizard.js') }}"></script>
+      <!-- Form Wizard Script -->
+      <script src="{{ asset('js/plugins/form-wizard.js') }}"></script>
 
-    <!-- AOS Animation Plugin-->
+      <!-- AOS Animation Plugin-->
 
-    <!-- App Script -->
-    <script src="{{ asset('js/hope-ui.js') }}" defer></script>
-  </body>
+      <!-- App Script -->
+      <script src="{{ asset('js/hope-ui.js') }}" defer></script>
+   </body>
+
 </html>
