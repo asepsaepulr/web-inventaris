@@ -49,9 +49,12 @@
                <div class="new-user-info">
                <form method="post" action="{{ route('room_store_inventory') }}">
                     @csrf
-                    <div class="form-group col-md-12">
-                        <label class="form-label" for="uname">  Room Name:</label>
-                            <select name="room_id" class="form-control" disabled>
+                    <div class="input-group mb-3">
+                        @foreach ($room as $room_data)
+                        <input type="hidden" value="{{ $room_data->id }}" name="room_id"> </input>
+                        @endforeach
+                        Room Name: 
+                            <select name="room_id">
                                 @foreach ($room as $room_data)
                                 <option value="{{$room_data->id}}"> {{$room_data->name}} </option>
                                 @endforeach
