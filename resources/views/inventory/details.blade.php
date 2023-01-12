@@ -1,45 +1,25 @@
 @extends('layouts.app') @section('content') 
 
 <div class="row ">
-
     <div class="col-sm-12">
-
         <div class="card">
-
             <div class="card-body">
-
                 <div class="bd-example">
-
                     <nav aria-label="breadcrumb">
-
                     <ol class="breadcrumb">
-
                         <li class="breadcrumb-item">
-
                             <h5 class="fw-bold"> Inventory Management </h5>
-
                         </li>
-
                         <li class="breadcrumb-item" aria-current="page">
-                            
                             <a class="" href="{{ route('inventory_index') }}"> Home Page Inventory </a>
-                        
                         </li>
-
                         <li class="breadcrumb-item active" aria-current="page">Detail Page Inventory</li>
-
                     </ol>
-
                     </nav>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
 </div>
 <div class="col-xl-8 col-lg-8">
     <div class="card">
@@ -68,15 +48,15 @@
 <div class="row mb-5">
     <div class="col-lg-12 margin-tb">
         <div class="float-right">
-        <a class="btn btn-sm btn-icon btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add" href="{{ route('inventory_edit', $data->id) }}">
+        <a class="btn btn-sm btn-icon" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add" href="{{ route('inventory_edit', $data->id) }}">
         <span class="btn-inner">
-        <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M11.4925 2.78906H7.75349C4.67849 2.78906 2.75049 4.96606 2.75049 8.04806V16.3621C2.75049 19.4441 4.66949 21.6211 7.75349 21.6211H16.5775C19.6625 21.6211 21.5815 19.4441 21.5815 16.3621V12.3341" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.82812 10.921L16.3011 3.44799C17.2321 2.51799 18.7411 2.51799 19.6721 3.44799L20.8891 4.66499C21.8201 5.59599 21.8201 7.10599 20.8891 8.03599L13.3801 15.545C12.9731 15.952 12.4211 16.181 11.8451 16.181H8.09912L8.19312 12.401C8.20712 11.845 8.43412 11.315 8.82812 10.921Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M15.1655 4.60254L19.7315 9.16854" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>                     <path fill-rule="evenodd" clip-rule="evenodd" d="M7.81 2H16.191C19.28 2 21 3.78 21 6.83V17.16C21 20.26 19.28 22 16.191 22H7.81C4.77 22 3 20.26 3 17.16V6.83C3 3.78 4.77 2 7.81 2ZM8.08 6.66V6.65H11.069C11.5 6.65 11.85 7 11.85 7.429C11.85 7.87 11.5 8.22 11.069 8.22H8.08C7.649 8.22 7.3 7.87 7.3 7.44C7.3 7.01 7.649 6.66 8.08 6.66ZM8.08 12.74H15.92C16.35 12.74 16.7 12.39 16.7 11.96C16.7 11.53 16.35 11.179 15.92 11.179H8.08C7.649 11.179 7.3 11.53 7.3 11.96C7.3 12.39 7.649 12.74 8.08 12.74ZM8.08 17.31H15.92C16.319 17.27 16.62 16.929 16.62 16.53C16.62 16.12 16.319 15.78 15.92 15.74H8.08C7.78 15.71 7.49 15.85 7.33 16.11C7.17 16.36 7.17 16.69 7.33 16.95C7.49 17.2 7.78 17.35 8.08 17.31Z" fill="currentColor"></path>                            </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.5058 6.62458L17.3747 8.49254L15.5058 6.62458ZM16.7076 4.97897L11.6543 10.0323C11.3932 10.293 11.2151 10.6252 11.1426 10.987L10.6758 13.3235L13.0123 12.8558C13.374 12.7835 13.7058 12.6061 13.967 12.3449L19.0203 7.29164C19.1721 7.13979 19.2926 6.95951 19.3748 6.76111C19.457 6.56271 19.4992 6.35006 19.4992 6.13531C19.4992 5.92055 19.457 5.70791 19.3748 5.5095C19.2926 5.3111 19.1721 5.13082 19.0203 4.97897C18.8684 4.82712 18.6882 4.70666 18.4897 4.62448C18.2913 4.5423 18.0787 4.5 17.8639 4.5C17.6492 4.5 17.4365 4.5423 17.2381 4.62448C17.0397 4.70666 16.8595 4.82712 16.7076 4.97897V4.97897Z" stroke="#AEAEB2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M17.7354 15.0892V17.7363C17.7354 18.2044 17.5495 18.6532 17.2186 18.9842C16.8876 19.3151 16.4387 19.5011 15.9707 19.5011H6.26472C5.79669 19.5011 5.34783 19.3151 5.01688 18.9842C4.68593 18.6532 4.5 18.2044 4.5 17.7363V8.03035C4.5 7.56232 4.68593 7.11345 5.01688 6.7825C5.34783 6.45155 5.79669 6.26563 6.26472 6.26562H8.91181" stroke="#AEAEB2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
         </span>
         </a>
         </div>
     </div>
-</div> @endsection
+</div> 
+@endsection
