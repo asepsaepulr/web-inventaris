@@ -41,7 +41,11 @@
 
                               </li>
 
-                              <li class="breadcrumb-item" aria-current="page">Home Page Users</li>
+                              <li class="breadcrumb-item" aria-current="page">
+                           
+                                 <a class="" href="{{ route('user.index') }}"> Home Page Users </a>
+                              
+                              </li>
 
                               <li class="breadcrumb-item active" aria-current="page">Create Page Users</li>
 

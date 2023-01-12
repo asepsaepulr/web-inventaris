@@ -1,20 +1,45 @@
-@extends('layouts.app') @section('content') <div class="row">
+@extends('layouts.app') @section('content') 
+
+<div class="row ">
+
     <div class="col-sm-12">
+
         <div class="card">
+
             <div class="card-body">
+
                 <div class="bd-example">
+
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <h5 class="fw-bold"> Inventory Management </h5>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">Details Inventory</li>
-                        </ol>
+
+                    <ol class="breadcrumb">
+
+                        <li class="breadcrumb-item">
+
+                            <h5 class="fw-bold"> Inventory Management </h5>
+
+                        </li>
+
+                        <li class="breadcrumb-item" aria-current="page">
+                            
+                            <a class="" href="{{ route('inventory_index') }}"> Home Page Inventory </a>
+                        
+                        </li>
+
+                        <li class="breadcrumb-item active" aria-current="page">Detail Page Inventory</li>
+
+                    </ol>
+
                     </nav>
+
                 </div>
+
             </div>
+
         </div>
+
     </div>
+
 </div>
 <div class="col-xl-8 col-lg-8">
     <div class="card">

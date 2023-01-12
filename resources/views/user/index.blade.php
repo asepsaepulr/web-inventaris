@@ -1,6 +1,8 @@
 @extends('layouts.app') @section('content') @if ($message = Session::get('succes')) <div class="alert alert-success">
   <p>{{ $message }}</p>
-</div> @endif <div class="row ">
+</div> @endif 
+
+<div class="row ">
   <div class="col-sm-12">
     <div class="card">
       <div class="card-body">
@@ -18,6 +20,7 @@
     </div>
   </div>
 </div>
+
 <div class="row">
   <div class="col-sm-12">
     <div class="card">

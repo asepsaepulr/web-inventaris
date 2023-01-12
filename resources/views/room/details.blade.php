@@ -1,21 +1,48 @@
-@extends('layouts.app') @section('content') <div class="row">
-  <div class="col-sm-12">
-    <div class="card">
-      <div class="card-body">
-        <div class="bd-example">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
-                <h5 class="fw-bold"> Room Management </h5>
-              </li>
-              <li class="breadcrumb-item active" aria-current="page">Room Details</li>
-            </ol>
-          </nav>
+@extends('layouts.app') @section('content') 
+
+
+<div class="row ">
+
+    <div class="col-sm-12">
+
+        <div class="card">
+
+            <div class="card-body">
+
+                <div class="bd-example">
+
+                    <nav aria-label="breadcrumb">
+
+                    <ol class="breadcrumb">
+
+                        <li class="breadcrumb-item">
+
+                            <h5 class="fw-bold"> Room Management </h5>
+
+                        </li>
+
+                        <li class="breadcrumb-item" aria-current="page">
+                            
+                            <a class="" href="{{ route('room_index') }}"> Home Page Room </a>
+                        
+                        </li>
+
+                        <li class="breadcrumb-item active" aria-current="page">Detail Page Room</li>
+
+                    </ol>
+
+                    </nav>
+
+                </div>
+
+            </div>
+
         </div>
-      </div>
+
     </div>
-  </div>
+
 </div>
+
 <div class="row">
   <div class="col-sm-12">
     <div class="card">
