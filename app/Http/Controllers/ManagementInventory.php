@@ -16,7 +16,7 @@ class ManagementInventory extends Controller
             return redirect()->back()->with(['error' => 'Inventory Already Exists']);
         } else {
             $validatedData = $request->validate([
-                'inventory_code' => ['required', 'integer'],
+                'inventory_code' => ['required', 'string', 'max:6', 'min:6'],
                 'name' => ['required'],
                 'user_id' => ['required'],
             ]);

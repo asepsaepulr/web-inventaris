@@ -63,7 +63,7 @@ Route::post('/room/update/{id}', [App\Http\Controllers\ManagementRoom::class, 'u
 Route::post('/room/search', [App\Http\Controllers\ManagementRoom::class, 'search'])->name('room_search');
 
 ### Room Data
-Route::get('/room/add_inventory', [App\Http\Controllers\RoomDataController::class, 'index'])->name('room_index_inventory');
+Route::get('/room/{id}/add_inventory', [App\Http\Controllers\RoomDataController::class, 'index'])->name('room_index_inventory');
 Route::post('/room/add_inventory', [App\Http\Controllers\RoomDataController::class, 'store'])->name('room_store_inventory');
 Route::get('/room/inventory/edit/{id}', [App\Http\Controllers\RoomDataController::class, 'update_index'])->name('room_update_inventory_page');
 Route::post('/room/inventory/edit', [App\Http\Controllers\RoomDataController::class, 'update'])->name('room_update_inventory');
