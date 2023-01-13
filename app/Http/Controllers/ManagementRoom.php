@@ -22,7 +22,7 @@ class ManagementRoom extends Controller
             $room->floor = $request->floor;
             $room->updated_by = $request->user_id;
             $room->save();
-    
+
             return redirect()->route('room_index')->with('succes','Room Berhasil Ditambahkan');
         }
     }
@@ -40,6 +40,10 @@ class ManagementRoom extends Controller
 
     public function update(Request $request, $id)
     {
+
+        if (Room::where('name', $request->name)->where('building_name', $request->building_name)->exists()) {
+            return redirect()->back()->with(['error' => 'Room Already Exists']);
+        } else {
         $update_data = Room::find($id);
         $update_data->name = $request->name;
         $update_data->building_name = $request->building_name;
@@ -48,7 +52,8 @@ class ManagementRoom extends Controller
         $update_data->save();
 
         return redirect()->route('room_index')->with('succes','Data Berhasil di Input');
-        
+        }
+
     }
 
     public function index()

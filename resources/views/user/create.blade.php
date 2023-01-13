@@ -15,7 +15,7 @@
                <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
 
                   <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-               
+
                </symbol>
 
             </svg>
@@ -97,9 +97,9 @@
                               </li>
 
                               <li class="breadcrumb-item" aria-current="page">
-                           
+
                                  <a class="" href="{{ route('user.index') }}"> Home Page Users </a>
-                              
+
                               </li>
 
                               <li class="breadcrumb-item active" aria-current="page">Create Page Users</li>
@@ -163,13 +163,8 @@
                   </div>
                   <div class="form-group">
                      <label class="form-label">User Role:</label>
-                     <select name="type" class="selectpicker form-control" data-style="py-0">
-                        <option>Select</option>
-                        <option>Web Designer</option>
-                        <option>Web Developer</option>
-                        <option>Tester</option>
-                        <option>Php Developer</option>
-                        <option>Ios Developer </option>
+                     <select name="type" class="selectpicker form-control" data-style="py-0" disabled>
+                        <option>Staff</option>
                      </select>
                   </div>
                </form>

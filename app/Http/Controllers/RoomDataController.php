@@ -52,20 +52,23 @@ class RoomDataController extends Controller
         $validatedData = $request->validate([
             'status' => ['required'],
             'quantity' => ['required','integer'],
-            'inventory_id' => ['required', 'integer'],            
+            'inventory_id' => ['required', 'integer'],
             'room_id' => ['required', 'integer'],
             'room_data_id' => ['required', 'integer']
         ]);
 
-        
+        if (RoomData::where('inventory_id', $request->inventory_id)->exists()){
+            return redirect()->back()->with(['error' => 'Inventory Already Exists']);
+        } else {
         $roomdata = RoomData::find($validatedData["room_data_id"]);
         $roomdata->status = $validatedData["status"];
         $roomdata->quantity = $validatedData["quantity"];
-        $roomdata->inventory_id = $validatedData['inventory_id'];        
-        $roomdata->room_id = $validatedData['room_id'];  
+        $roomdata->inventory_id = $validatedData['inventory_id'];
+        $roomdata->room_id = $validatedData['room_id'];
         $roomdata->save();
 
         return redirect()->route('room_details', $request->room_id);
+        }
     }
 
     public function delete($id)

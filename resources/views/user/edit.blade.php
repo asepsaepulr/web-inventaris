@@ -15,7 +15,7 @@
                <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
 
                   <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-               
+
                </symbol>
 
             </svg>
@@ -93,9 +93,9 @@
                            </li>
 
                            <li class="breadcrumb-item" aria-current="page">
-                           
+
                               <a class="" href="{{ route('user.index') }}"> Home Page Users </a>
-                           
+
                            </li>
 
                            <li class="breadcrumb-item active" aria-current="page">Edit Page Users</li>
@@ -120,7 +120,7 @@
          <div class="card">
             <div class="card-header d-flex justify-content-between">
                <div class="header-title">
-                  <h4 class="card-title">Add New User</h4>
+                  <h4 class="card-title">Edit User</h4>
                </div>
             </div>
             <div class="card-body">
@@ -165,13 +165,14 @@
          <div class="card">
             <div class="card-header d-flex justify-content-between">
                <div class="header-title">
-                  <h4 class="card-title">New User Information</h4>
+                  <h4 class="card-title">User Information</h4>
                </div>
             </div>
             <div class="card-body">
                <div class="new-user-info">
-                  <form method="POST" action="{{ route('user.store') }}">
-                        @csrf
+                  <form method="POST" action="{{route('user.update',$user->id)}}">
+                  <input type="hidden" name="_token" value="{{csrf_token()}}">
+                            {{method_field("PUT")}}
                      <div class="row">
                         <div class="form-group col-md-6">
                            <label class="form-label" for="uname">Name:</label>
@@ -184,28 +185,15 @@
                            </div>
                         <div class="form-group col-md-6">
                            <label class="form-label" for="email">Email:</label>
-                           <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" required autocomplete="email" value="{{ $user->email }}" id="email" placeholder="Email">
+                           <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" required autocomplete="email" value="{{ $user->email }}" id="email" placeholder="Email" readonly>
                            @error('email')
                               <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                               </span>
                            @enderror
                            </div>
-                        <div class="form-group col-md-6">
-                           <label class="form-label" for="pass">Password:</label>
-                           <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" id="pass" placeholder="Password">
-                           @error('password')
-                              <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                              </span>
-                           @enderror
-                           </div>
-                        <div class="form-group col-md-6">
-                           <label class="form-label" for="rpass">Repeat Password:</label>
-                           <input type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" id="rpass" placeholder="Repeat Password ">
-                           </div>
                      </div>
-                     <button type="submit" class="btn btn-primary">Add New User</button>
+                     <button type="submit" class="btn btn-primary">Update User</button>
                   </form>
                </div>
             </div>

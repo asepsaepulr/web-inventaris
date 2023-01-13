@@ -90,7 +90,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update_ser=User::findOrFail($id);
+        $this->validate($request,[
+            'name' => ['required', 'string', 'max:255'],
+        ]);
+        $input_data=$request->all();
+        $update_ser->update($input_data);
+        $staffRole = Role::where('name', 'staff')->first();
+        return redirect()->route('user.index')->with('succes','Data Berhasil di Edit');
     }
 
     /**
